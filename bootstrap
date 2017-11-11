@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+printInfo()
+{
+    echo "Info   | $1"
+}
+
+set -e
+
+# Install xcode
+if [[ $(/usr/bin/gcc 2>&1) =~ "no developer tools were found" ]] || [[ ! -x /usr/bin/gcc ]]; then
+    printInfo "Installing XCode"
+    xcode-select --install
+else
+    printInfo "XCode already installed"
+fi
+
+# Install homebrew
+if [[ ! -x /usr/local/bin/brew ]]; then
+    printInfo "Installing Homebrew"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
+else
+    printInfo "Homebrew already installed"
+fi
+
+# Reconfigura Path
+export PATH=/usr/local/bin:$PATH
+
+# Install ansible
+if [[ ! -x /usr/local/bin/ansible ]]; then
+    printInfo "Installing Ansible"
+    brew install ansible
+else
+    printInfo "Ansible already installed"
+fi
+
+# Install git
+if [[ ! -x /usr/local/bin/git ]]; then
+    printInfo "Installing Git"
+    brew install ansible
+else
+    printInfo "Git already installed"
+fi
