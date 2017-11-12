@@ -41,3 +41,6 @@ if [[ ! -x /usr/local/bin/git ]]; then
 else
     printInfo "Git already installed"
 fi
+
+# Clone this repository
+git clone https://github.com/fefas/mac-setup.git
