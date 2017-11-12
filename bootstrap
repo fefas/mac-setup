@@ -19,7 +19,6 @@ fi
 if [[ ! -x /usr/local/bin/brew ]]; then
     printInfo "Installing Homebrew"
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    brew update
 else
     printInfo "Homebrew already installed"
 fi
