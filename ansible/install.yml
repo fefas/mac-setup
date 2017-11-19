@@ -13,6 +13,7 @@
         - dropbox
         - google-chrome
         - iterm2
+        - docker
         - atom
         - sourcetree
         - gimp
@@ -31,3 +32,6 @@
         - name: git
         - name: tree
         - name: jq
+        - name: docker
+        - name: docker-compose
+        - name: docker-machine
