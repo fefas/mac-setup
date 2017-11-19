@@ -1,21 +1,16 @@
 #!/usr/bin/env bash
 
-printInfo()
-{
-    echo "Info   | $1"
-}
-
 set -e
 
 # Install xcode
 if [[ $(/usr/bin/gcc 2>&1) =~ "no developer tools were found" ]] || [[ ! -x /usr/bin/gcc ]]; then
-    printInfo "Installing XCode"
+    printInfo Installing XCode
     xcode-select --install
 fi
 
 # Install homebrew
 if [[ ! -x /usr/local/bin/brew ]]; then
-    printInfo "Installing Homebrew"
+    echo Installing Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -24,13 +19,13 @@ export PATH=/usr/local/bin:$PATH
 
 # Install ansible
 if [[ ! -x /usr/local/bin/ansible ]]; then
-    printInfo "Installing Ansible"
+    echo Installing Ansible
     brew install ansible
 fi
 
 # Install git
 if [[ ! -x /usr/local/bin/git ]]; then
-    printInfo "Installing Git"
+    echo Installing Git
     brew install ansible
 fi
 
