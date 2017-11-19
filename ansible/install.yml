@@ -2,6 +2,10 @@
 - hosts: localhost
 
   tasks:
+    - name: Update homebrew
+      homebrew:
+        update_homebrew: yes
+
     - name: Install desktop applications
       homebrew_cask: name={{ item }}
       with_items:
