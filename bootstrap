@@ -30,8 +30,9 @@ if [[ ! -x /usr/local/bin/git ]]; then
 fi
 
 # Clone this repository
-git clone https://github.com/fefas/mac-setup.git $HOME/Downloads
+macSetupDir=$HOME/Downloads/mac-setup
+git clone https://github.com/fefas/mac-setup.git $macSetupDir
 
 # Install desktop applications and CLI through ansible
-cd $HOME/Downloads/mac-setup
+cd $macSetupDir
 ansible-playbook -i ansible/hosts.ini ansible/install.yml
