@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+
+  tasks:
+    - name: Install desktop applications
+      homebrew_cask: name={{ item }}
+      with_items:
+        - 1password
+        - dropbox
+        - google-chrome
+        - iterm2
+        - atom
+        - sourcetree
+        - gimp
+        - slack
+        - skype
+        - telegram
+        - whatsapp
+        - rescuetime
+        - android-file-transfer
