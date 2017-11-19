@@ -43,4 +43,8 @@ else
 fi
 
 # Clone this repository
-git clone https://github.com/fefas/mac-setup.git
+git clone https://github.com/fefas/mac-setup.git $HOME/Downloads
+
+# Install desktop applications and CLI through ansible
+cd $HOME/Downloads/mac-setup
+ansible-playbook -i ansible/hosts.ini ansible/install.yml
