@@ -22,3 +22,12 @@
         - whatsapp
         - rescuetime
         - android-file-transfer
+
+    - name: Install CLI tools
+      homebrew: name={{ item.name }}
+      with_items:
+        - name: vim
+        - name: tmux
+        - name: git
+        - name: tree
+        - name: jq
