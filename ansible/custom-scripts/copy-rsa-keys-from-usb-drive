@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+set -e
+
+usbDriveName='Fefas UsbDr'
+usbDriveDir="/Volumes/$usbDriveName"
+rsaKeysTargetDir=$HOME/.ssh
+
+if [ ! -d "$usbDriveDir" ]; then
+  echo Make sure $usbDriveName is pluged
+  exit 1
+fi
+
+mkdir -p $rsaKeysTargetDir
+cp "$usbDriveDir/id_rsa" "$rsaKeysTargetDir/id_rsa"
+cp "$usbDriveDir/id_rsa.pub" "$rsaKeysTargetDir/id_rsa.pub"
+
+chmod 0600 "$rsaKeysTargetDir/id_rsa" "$rsaKeysTargetDir/id_rsa.pub"
