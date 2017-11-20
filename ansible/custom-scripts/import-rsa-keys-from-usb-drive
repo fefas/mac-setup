@@ -12,7 +12,6 @@ if [ ! -d "$usbDriveDir" ]; then
 fi
 
 mkdir -p $rsaKeysTargetDir
-cp "$usbDriveDir/id_rsa" "$rsaKeysTargetDir/id_rsa"
-cp "$usbDriveDir/id_rsa.pub" "$rsaKeysTargetDir/id_rsa.pub"
+cp "$usbDriveDir"/id_rsa* $rsaKeysTargetDir
 
-chmod 0600 "$rsaKeysTargetDir/id_rsa" "$rsaKeysTargetDir/id_rsa.pub"
+chmod 0600 $rsaKeysTargetDir/id_rsa*
