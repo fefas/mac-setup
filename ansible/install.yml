@@ -29,9 +29,14 @@
       with_items:
         - name: vim
         - name: tmux
+        - name: zsh
+        - name: cmake
+        - name: gcc
+        - name: wget
+        - name: curl
+        - name: jq
         - name: git
         - name: tree
-        - name: jq
         - name: docker
         - name: docker-compose
         - name: docker-machine
