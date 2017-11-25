@@ -32,7 +32,3 @@ fi
 # Clone this repository
 macSetupDir=$HOME/Downloads/mac-setup
 git clone https://github.com/fefas/mac-setup.git $macSetupDir
-
-# Install desktop applications and CLI through ansible
-cd $macSetupDir
-ansible-playbook -i ansible/hosts.ini ansible/install.yml
