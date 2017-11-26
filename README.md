@@ -11,6 +11,8 @@ process and let my life less boring.
 > **Recommended:** after formatting, it is better first to update the OS
 > throught the App Store application.
 
+Follow the next steps to get your MacBook set up.
+
 1. Run the `bootstrap` script using the following command on the Terminal and it
    will install XCode, Homebrew, Ansible and Git and will clone this repository:
 
