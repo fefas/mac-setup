@@ -1,23 +1,24 @@
-# My personal mac setup
+> That is my personal Mac set up and there are a lot of like this one
+> outside there.
 
-As we sometimes have to format our computer, I decided to automated this
-process and let my life less boring.
+# My personal Mac setup
 
-> That is my personal Mac set up and there are a lot of like this one outside
-> there.
+As we sometimes have to format our computer, I've decided to create this
+repository that aims to automate my Mac setup process and let my life less
+boring.
 
-## Running it
+> **Recommended:** after formatting, it is better to update the OS throught the
+> App Store application before running the steps.
 
-> **Recommended:** after formatting, it is better first to update the OS
-> throught the App Store application.
+## Steps
 
-Follow the next steps to get your MacBook set up.
+Follow the steps to get your Mac set up:
 
 1. Run the `bootstrap` script using the following command on the Terminal and it
    will install XCode, Homebrew, Ansible and Git and will clone this repository:
 
    ```shell
-   $ curl -fsSL https://raw.githubusercontent.com/fefas/mac-setup/master/bootstrap | /bin/sh 
+   $ sh -c (curl -fsSL https://raw.githubusercontent.com/fefas/mac-setup/master/bootstrap)
    ```
 
 2. After that, the script `install` will run the
@@ -29,11 +30,11 @@ Follow the next steps to get your MacBook set up.
    ```
 
 3. This is a manually step for configuring desktop applications that can not be
-   automated, like _1Password_, _Dropbox_ and so on. I may want do it before the
-   following steps...
+   automated (or are very hard to), like _1Password_, _Dropbox_ and so on. You
+   may want to do it before the following steps...
 
-4. Import the RSA and GPG keys from external USB drive (do I have to write that
-   the USB drive MUST be pluged?):
+4. Import the RSA and GPG keys from external USB drive (requires USB drive
+   pluged):
 
    ```shell
    $ cd ~/Downloads/mac-setup
