@@ -11,19 +11,19 @@ process and let my life less boring.
 > **Recommended:** after formatting, it is better first to update the OS
 > throught the App Store application.
 
-1. Run the bootstrap script using the following command on the Terminal and it
+1. Run the `bootstrap` script using the following command on the Terminal and it
    will install XCode, Homebrew, Ansible and Git and will clone this repository:
 
    ```shell
    $ curl -fsSL https://raw.githubusercontent.com/fefas/mac-setup/master/bootstrap | /bin/sh 
    ```
 
-2. After that, run the  will download this repository and run the
+2. After that, the script `install` will run the
    [install.yml](ansible/install.yml) playbook:
 
    ```shell
-   $ cd ~/Downloads/mac-setup/ansible
-   $ ansible-playbook -i hosts.ini install.yml
+   $ cd ~/Downloads/mac-setup
+   $ ./install
    ```
 
 3. This is a manually step for configuring desktop applications that can not be
