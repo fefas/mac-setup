@@ -27,6 +27,7 @@
     - name: Install CLI tools
       homebrew: name={{ item.name }}
       with_items:
+        - name: openssh
         - name: vim
         - name: tmux
         - name: zsh
