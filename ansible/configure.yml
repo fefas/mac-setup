@@ -2,5 +2,20 @@
 - hosts: localhost
 
   tasks:
-    - name: Copy RSA from Usb Drive
-      command: ./custom-scripts/copy-rsa-keys-from-usb-drive
+    - name: Configure dotfiles
+      file:
+        src: /Users/fefas/Dropbox/Coding/{{ item.src }}
+        dest: $HOME/{{ item.dest }}
+        state: link
+      with_items:
+        - src: fefas/dotfiles/vimrc
+          dest: .vimrc
+        - src: fefas/dotfiles/gitignore
+          dest: .gitignore_global
+        - src: fefas/dotfiles/gitconfig
+          dest: .gitconfig
+        - src: fefas/dotfiles/zshrc
+          dest: .zshrc
+
+    - name: Install vim plugins
+      command: vim +qall

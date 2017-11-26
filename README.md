@@ -44,6 +44,6 @@ Follow the steps to get your Mac set up:
 5. Finally, the environment has to be configured:
 
    ```shell
-   $ cd ~/Downloads/mac-setup/ansible
-   $ ansible-playbook -i hosts.ini configure.yml
+   $ cd ~/Downloads/mac-setup
+   $ ./configure
    ```
