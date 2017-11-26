@@ -36,8 +36,8 @@ Follow the next steps to get your MacBook set up.
    the USB drive MUST be pluged?):
 
    ```shell
-   $ cd ~/Downloads/mac-setup/ansible
-   $ ansible-playbook -i hosts.ini import-keys.yml
+   $ cd ~/Downloads/mac-setup
+   $ ./import-keys
    ```
 
 5. Finally, the environment has to be configured:
