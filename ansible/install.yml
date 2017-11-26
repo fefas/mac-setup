@@ -40,3 +40,6 @@
         - name: docker
         - name: docker-compose
         - name: docker-machine
+
+    - name: Install oh-my-zsh
+      script: ./custom-scripts/install-oh-my-zsh
