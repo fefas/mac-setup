@@ -1,6 +1,3 @@
-> That is my personal Mac set up and there are a lot of like this one
-> outside there.
-
 # My personal Mac setup
 
 As we sometimes have to format our computer, I've decided to create this
@@ -33,8 +30,7 @@ Follow the steps to get your Mac set up:
    automated (or are very hard to), like _1Password_, _Dropbox_ and so on. You
    may want to do it before the following steps...
 
-4. Import the RSA and GPG keys from external USB drive (requires USB drive
-   pluged):
+4. Import the RSA keys from external USB drive (requires USB drive pluged):
 
    ```shell
    $ cd ~/Downloads/mac-setup
@@ -47,3 +43,16 @@ Follow the steps to get your Mac set up:
    $ cd ~/Downloads/mac-setup
    $ ./configure
    ```
+
+## TODO
+
+What I still want to automate:
+
+* [ ] Monitor
+  - [ ] Screen resolution
+  - [ ] Night Shift
+* [ ] Dock
+  - [ ] Add the applications I use and remove the other ones
+* [ ] Configure iTerm2
+* [ ] Wallpapers
+* [ ] ...
