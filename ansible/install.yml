@@ -2,6 +2,10 @@
 - hosts: localhost
 
   tasks:
+    - name: Homebrew tap PHP
+      homebrew_tap:
+        name: homebrew/php
+
     - name: Update homebrew
       homebrew:
         update_homebrew: yes
@@ -40,6 +44,7 @@
         - name: docker
         - name: docker-compose
         - name: docker-machine
+        - name: php72
 
     - name: Install oh-my-zsh
       script: ./custom-scripts/install-oh-my-zsh
