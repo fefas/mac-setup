@@ -49,3 +49,9 @@
 
     - name: Install oh-my-zsh
       script: ./custom-scripts/install-oh-my-zsh
+
+    - gem:
+        name: travis
+        version: 1.8.8
+        build_flags: --no-rdoc --no-ri
+        user_install: no
