@@ -36,6 +36,8 @@
         - name: zsh
         - name: cmake
         - name: gcc
+        - name: ruby
+        - name: php72
         - name: wget
         - name: curl
         - name: jq
@@ -44,7 +46,6 @@
         - name: docker
         - name: docker-compose
         - name: docker-machine
-        - name: php72
 
     - name: Install oh-my-zsh
       script: ./custom-scripts/install-oh-my-zsh
