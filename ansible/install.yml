@@ -27,6 +27,7 @@
         - rescuetime
         - android-file-transfer
         - steam
+        - lastfm
 
     - name: Install CLI tools
       homebrew: name={{ item.name }}
