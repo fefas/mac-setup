@@ -18,6 +18,8 @@
         - google-chrome
         - iterm2
         - docker
+        - vagrant
+        - virtualbox
         - atom
         - gimp
         - slack
