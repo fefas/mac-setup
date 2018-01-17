@@ -42,6 +42,8 @@
         - name: gcc
         - name: ruby
         - name: php72
+        - name: composer
+        - name: node
         - name: wget
         - name: curl
         - name: jq
