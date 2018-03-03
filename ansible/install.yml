@@ -36,6 +36,7 @@
       with_items:
         - name: openssh
         - name: vim
+        - name: macvim
         - name: tmux
         - name: zsh
         - name: cmake
