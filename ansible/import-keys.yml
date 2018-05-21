@@ -1,6 +1,0 @@
----
-- hosts: localhost
-
-  tasks:
-    - name: Copy RSA from Usb Drive
-      command: ./custom-scripts/import-rsa-keys-from-usb-drive

@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-
-ansible-playbook -i ansible/hosts.ini ansible/import-keys.yml
