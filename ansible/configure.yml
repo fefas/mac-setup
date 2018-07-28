@@ -4,12 +4,14 @@
   tasks:
     - name: Configure dotfiles
       file:
-        src: /Users/fefas/Dropbox/Coding/{{ item.src }}
+        src: $HOME/Dropbox/Coding/{{ item.src }}
         dest: $HOME/{{ item.dest }}
         state: link
       with_items:
         - src: fefas/dotfiles/vimrc
           dest: .vimrc
+        - src: fefas/dotfiles/tmux.conf
+          dest: .tmux.conf
         - src: fefas/dotfiles/gitignore
           dest: .gitignore_global
         - src: fefas/dotfiles/gitconfig
