@@ -30,6 +30,8 @@
         - android-file-transfer
         - steam
         - lastfm
+        - spotify
+        - ngrok
 
     - name: Install CLI tools
       homebrew: name={{ item.name }}
