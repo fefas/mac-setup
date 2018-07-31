@@ -53,6 +53,7 @@
         - name: curl
         - name: jq
         - name: git
+        - name: git-quick-stats
         - name: tree
         - name: docker
         - name: docker-compose
