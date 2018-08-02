@@ -17,12 +17,13 @@
         - dropbox
         - google-chrome
         - iterm2
+        - atom
         - caskroom/cask/intellij-idea-ce
         - java
         - docker
         - vagrant
         - virtualbox
-        - atom
+        - ngrok
         - gimp
         - slack
         - skype
@@ -30,11 +31,10 @@
         - icq
         - whatsapp
         - rescuetime
-        - android-file-transfer
         - steam
-        - lastfm
         - spotify
-        - ngrok
+        - lastfm
+        - android-file-transfer
 
     - name: Install CLI tools
       homebrew: name={{ item.name }}
