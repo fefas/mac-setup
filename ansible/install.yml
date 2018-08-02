@@ -17,6 +17,8 @@
         - dropbox
         - google-chrome
         - iterm2
+        - caskroom/cask/intellij-idea-ce
+        - java
         - docker
         - vagrant
         - virtualbox
@@ -45,6 +47,7 @@
         - name: cmake
         - name: gcc
         - name: ruby
+        - name: sbt@1
         - name: php72
         - name: composer
         - name: node
