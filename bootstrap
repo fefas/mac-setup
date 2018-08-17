@@ -2,15 +2,22 @@
 
 set -e
 
+function printInfo() {
+    YELLOW='\033[0;33m'
+    NC='\033[0m' # No Color
+
+    echo -e "${YELLOW}$1${NC}"
+}
+
 # Install xcode
 if [[ $(/usr/bin/gcc 2>&1) =~ "no developer tools were found" ]] || [[ ! -x /usr/bin/gcc ]]; then
-    printInfo Installing XCode
+    printInfo 'Installing XCode'
     xcode-select --install
 fi
 
 # Install homebrew
 if [[ ! -x /usr/local/bin/brew ]]; then
-    echo Installing Homebrew
+    printInfo Installing Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
@@ -19,13 +26,13 @@ export PATH=/usr/local/bin:$PATH
 
 # Install ansible
 if [[ ! -x /usr/local/bin/ansible ]]; then
-    echo Installing Ansible
+    printInfo Installing Ansible
     brew install ansible
 fi
 
 # Install git
 if [[ ! -x /usr/local/bin/git ]]; then
-    echo Installing Git
+    printInfo Installing Git
     brew install git
 fi
 
