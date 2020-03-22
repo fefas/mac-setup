@@ -2,10 +2,6 @@
 - hosts: localhost
 
   tasks:
-    - name: Homebrew tap PHP
-      homebrew_tap:
-        name: homebrew/php
-
     - name: Update homebrew
       homebrew:
         update_homebrew: yes
@@ -13,46 +9,38 @@
     - name: Install desktop applications
       homebrew_cask: name={{ item }}
       with_items:
+        - sequel-pro
+        - todoist
         - 1password
-        - boxcryptor
         - dropbox
         - google-chrome
+        - firefox
         - iterm2
         - atom
-        - caskroom/cask/intellij-idea-ce
-        - java
+        - phpstorm
         - docker
-        - vagrant
-        - virtualbox
         - ngrok
         - gimp
         - slack
-        - skype
         - telegram
-        - icq
         - whatsapp
         - rescuetime
         - steam
         - spotify
-        - lastfm
-        - android-file-transfer
 
     - name: Install CLI tools
       homebrew: name={{ item.name }}
       with_items:
         - name: openssh
         - name: vim
-        - name: macvim
         - name: tmux
         - name: zsh
         - name: cmake
         - name: gcc
         - name: ruby
-        - name: sbt@1
-        - name: php72
+        - name: php@7.4
         - name: composer
         - name: node
-        - name: mysql
         - name: wget
         - name: curl
         - name: jq
