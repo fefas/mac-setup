@@ -34,6 +34,7 @@
         - name: openssh
         - name: vim
         - name: tmux
+        - name: watch
         - name: zsh
         - name: cmake
         - name: gcc
