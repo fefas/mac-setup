@@ -37,5 +37,4 @@ if [[ ! -x /usr/local/bin/git ]]; then
 fi
 
 # Clone this repository
-macSetupDir=$HOME/.mac-setup
-git clone https://github.com/fefas/mac-setup.git $macSetupDir
+git clone git@github.com:fefas/mac-setup.git $HOME/.mac-setup/src

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+function printHelp() {
+    echo "Use one of the following commands"
+    echo "  install"
+    echo "  update"
+
+    exit 1
+}
+
+command=$1
+
+case $command in
+    "install") ./run-ansible install ;;
+    "update") ./run-ansible update ;;
+    *) printHelp
+esac

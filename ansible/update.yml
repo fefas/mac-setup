@@ -1,0 +1,28 @@
+---
+- hosts: localhost
+  vars:
+    username: fefas
+    workDir: ~/.mac-setup
+    srcDir: '{{ workDir }}/src'
+    dotfilesDir: '{{ workDir }}/dotfiles'
+    srcRepo: 'git@github.com:fefas/mac-setup.git'
+    dotfilesRepo: 'git@github.com:{{ username }}/dotfiles.git'
+
+  tasks:
+  - name: Update mac-setup
+    git:
+      repo: "{{ srcRepo }}"
+      dest: "{{ srcDir }}"
+      update: yes
+
+  - name: Update homebrew
+    homebrew:
+      update_homebrew: yes
+      upgrade_all: yes
+
+  - name: Update dotfiles
+    git:
+      repo: "{{ dotfilesRepo }}"
+      dest: "{{ dotfilesDir }}"
+      update: yes
+      version: master

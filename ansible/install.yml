@@ -1,56 +1,84 @@
 ---
 - hosts: localhost
+  vars:
+    username: fefas
+    workDir: ~/.mac-setup
+    srcDir: '{{ workDir }}/src'
+    dotfilesDir: '{{ workDir }}/dotfiles'
+    dotfilesRepo: 'git@github.com:{{ username }}/dotfiles.git'
 
   tasks:
-    - name: Update homebrew
-      homebrew:
-        update_homebrew: yes
+  - name: Check if dotfiles repo is cloned
+    stat:
+      path: '{{ workDir }}/dotfiles'
+    register: dotfilesRepo
 
-    - name: Install desktop applications
-      homebrew_cask: name={{ item }}
-      with_items:
-        - sequel-pro
-        - todoist
-        - 1password
-        - dropbox
-        - google-chrome
-        - firefox
-        - iterm2
-        - atom
-        - phpstorm
-        - docker
-        - ngrok
-        - gimp
-        - slack
-        - telegram
-        - whatsapp
-        - rescuetime
-        - steam
-        - spotify
+  - name: Clone dotfiles
+    when: dotfilesRepo.stat.exists == False
+    git:
+      repo: "{{ dotfilesRepo }}"
+      dest: "{{ dotfilesDir }}"
+      version: master
 
-    - name: Install CLI tools
-      homebrew: name={{ item.name }}
-      with_items:
-        - name: openssh
-        - name: vim
-        - name: tmux
-        - name: watch
-        - name: zsh
-        - name: cmake
-        - name: gcc
-        - name: ruby
-        - name: php@7.4
-        - name: composer
-        - name: node
-        - name: wget
-        - name: curl
-        - name: jq
-        - name: git
-        - name: git-quick-stats
-        - name: tree
-        - name: docker
-        - name: docker-compose
-        - name: docker-machine
+  - name: Link dotfiles
+    file:
+      state: link
+      src: '{{ dotfilesDir }}/{{ item.src }}'
+      dest: '~/{{ item.dest }}'
+    with_items:
+    - src: gitconfig
+      dest: .gitconfig
+    - src: gitignore
+      dest: .gitignore_global
+    - src: tmux.conf
+      dest: .tmux.conf
+    - src: vimrc
+      dest: .vimrc
+    - src: zshrc
+      dest: .zshrc
 
-    - name: Install oh-my-zsh
-      script: ./custom-scripts/install-oh-my-zsh
+  - name: Install desktop applications
+    homebrew_cask: name={{ item }}
+    with_items:
+    - 1password
+    # - atom
+    - docker
+    - dropbox
+    - firefox
+    - gimp
+    - google-chrome
+    - iterm2
+    - phpstorm
+    - rescuetime
+    - slack
+    # - spotify
+    - steam
+    - telegram
+    - whatsapp
+
+  - name: Install CLI tools
+    homebrew: name={{ item.name }}
+    with_items:
+    - name: cmake
+    - name: composer
+    - name: curl
+    - name: docker
+    - name: docker-compose
+    - name: docker-machine
+    - name: gcc
+    - name: git
+    - name: jq
+    - name: openssh
+    - name: node
+    - name: php@7.4
+    - name: python3
+    - name: ruby
+    - name: tmux
+    - name: tree
+    - name: vim
+    - name: watch
+    - name: wget
+    - name: zsh
+
+  - name: Install oh-my-zsh
+    script: ./custom-scripts/install-oh-my-zsh
