@@ -8,6 +8,13 @@
     dotfilesRepo: 'git@github.com:{{ username }}/dotfiles.git'
 
   tasks:
+  - name: Create exec link
+    file:
+      state: link
+      src: '{{ srcDir }}/run'
+      dest: '/usr/local/bin/mac-setup'
+    register: dotfilesRepo
+
   - name: Check if dotfiles repo is cloned
     stat:
       path: '{{ workDir }}/dotfiles'
