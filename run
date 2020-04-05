@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-WORK_DIR=$HOME/.mac-setup
-SRC_DIR=$WORK_DIR/src
-DOTFILES_DIR=$WORK_DIR/dotfiles
+export WORK_DIR=$HOME/.mac-setup
+export SRC_DIR=$WORK_DIR/src
+export DOTFILES_DIR=$WORK_DIR/dotfiles
+export CONFIG_FILE=$DOTFILES_DIR/mac-setup.yaml
+export CONFIG_CUSTOM_TASKS=$DOTFILES_DIR/mac-setup.custom-tasks.yaml
 
 function printHelp() {
     echo "Use one of the following commands"

@@ -1,71 +1,46 @@
 ---
 - hosts: localhost
-  vars:
-    workDir: ~/.mac-setup
-    srcDir: '{{ workDir }}/src'
-    dotfilesDir: '{{ workDir }}/dotfiles'
 
   tasks:
+  - name: Check config file
+    stat:
+      path: '{{ ansible_env.CONFIG_FILE }}'
+    register: configFileResult
+
+  - name: Check custom tasks file
+    stat:
+      path: '{{ ansible_env.CONFIG_CUSTOM_TASKS }}'
+    register: customTasks
+
+  - name: Abort if config file does not exist
+    fail:
+      msg: "Please, create a proper config file '{{ ansible_env.CONFIG_FILE }}'"
+    when: not configFileResult.stat.exists
+
+  - name: Include config file
+    include_vars:
+      file: '{{ ansible_env.CONFIG_FILE }}'
+      name: config
+
   - name: Link dotfiles
     file:
       state: link
-      src: '{{ dotfilesDir }}/{{ item.src }}'
-      dest: '~/{{ item.dest }}'
+      src: '{{ ansible_env.DOTFILES_DIR }}/{{ item.src }}'
+      dest: '{{ ansible_env.HOME }}/{{ item.dest }}'
       force: yes
-    with_items:
-    - src: gitconfig
-      dest: .gitconfig
-    - src: gitignore
-      dest: .gitignore_global
-    - src: tmux.conf
-      dest: .tmux.conf
-    - src: vimrc
-      dest: .vimrc
-    - src: zshrc
-      dest: .zshrc
+    with_items: '{{ config.dotfiles }}'
 
   - name: Install desktop applications
     homebrew_cask: name={{ item }}
-    with_items:
-    - 1password
-    # - atom
-    - docker
-    - dropbox
-    - firefox
-    - gimp
-    - google-chrome
-    - iterm2
-    - phpstorm
-    - rescuetime
-    - slack
-    # - spotify
-    - steam
-    - telegram
-    - whatsapp
+    with_items: '{{ config.brewCask }}'
 
   - name: Install CLI tools
     homebrew: name={{ item.name }}
-    with_items:
-    - name: cmake
-    - name: composer
-    - name: curl
-    - name: docker
-    - name: docker-compose
-    - name: docker-machine
-    - name: gcc
-    - name: git
-    - name: jq
-    - name: openssh
-    - name: node
-    - name: php@7.4
-    - name: python3
-    - name: ruby
-    - name: tmux
-    - name: tree
-    - name: vim
-    - name: watch
-    - name: wget
-    - name: zsh
+    with_items: '{{ config.brew }}'
 
-  - name: Install oh-my-zsh
-    script: ./custom-scripts/install-oh-my-zsh
+  - name: Custom tasks
+    include_tasks: '{{ customTasks.stat.path }}'
+    when: customTasks.stat.exists
+
+  #- name: Install oh-my-zsh
+  #  script: ./custom-scripts/install-oh-my-zsh
