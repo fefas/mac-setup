@@ -1,8 +1,5 @@
 ---
 - hosts: localhost
-  vars:
-    workDir: ~/.mac-setup
-    dotfilesDir: '{{ workDir }}/dotfiles'
 
   vars_prompt:
   - name: username
@@ -13,5 +10,5 @@
   - name: Clone dotfiles
     git:
       repo: 'git@github.com:{{ username }}/dotfiles.git'
-      dest: "{{ dotfilesdir }}"
+      dest: '{{ ansible_env.DOTFILES_DIR }}'
       version: master

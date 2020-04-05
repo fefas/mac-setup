@@ -1,28 +1,33 @@
 ---
 - hosts: localhost
-  vars:
-    username: fefas
-    workDir: ~/.mac-setup
-    srcDir: '{{ workDir }}/src'
-    dotfilesDir: '{{ workDir }}/dotfiles'
-    srcRepo: 'git@github.com:fefas/mac-setup.git'
-    dotfilesRepo: 'git@github.com:{{ username }}/dotfiles.git'
 
   tasks:
+  - name: Determine mac-setup repo
+    shell:
+      cmd: git config --get remote.origin.url
+      chdir: '{{ ansible_env.SRC_DIR }}'
+    register: selfRepoCmd
+
+  - name: Determine dotfiles repo
+    shell:
+      cmd: git config --get remote.origin.url
+      chdir: '{{ ansible_env.DOTFILES_DIR }}'
+    register: dotfilesRepoCmd
+
   - name: Update mac-setup
     git:
-      repo: "{{ srcRepo }}"
-      dest: "{{ srcDir }}"
+      repo: "{{ selfRepoCmd.stdout }}"
+      dest: "{{ ansible_env.SRC_DIR }}"
       update: yes
+
+  - name: Update dotfiles
+    git:
+      repo: "{{ dotfilesRepoCmd.stdout }}"
+      dest: "{{ ansible_env.DOTFILES_DIR }}"
+      update: yes
+      version: master
 
   - name: Update homebrew
     homebrew:
       update_homebrew: yes
       upgrade_all: yes
-
-  - name: Update dotfiles
-    git:
-      repo: "{{ dotfilesRepo }}"
-      dest: "{{ dotfilesDir }}"
-      update: yes
-      version: master
