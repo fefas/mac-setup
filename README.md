@@ -1,8 +1,7 @@
 # My personal Mac setup
 
 As we sometimes have to format our computer, I've decided to create this
-repository that aims to automate my Mac setup process and let my life less
-boring.
+repository that aims to automate my Mac setup process and let my life less boring.
 
 > **Recommended:** after formatting, it is better to update the OS throught the
 > App Store application before running the steps.
@@ -21,7 +20,7 @@ Follow the steps to get your Mac set up:
 2. After that, the script `install` will run the
    ```shell
    $ mac-setup init # clone dotfiles
-   $ mac-setup init # configure and install
+   $ mac-setup install # configure and install
    ```
 
 ## TODO
