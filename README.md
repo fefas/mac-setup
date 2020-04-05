@@ -15,13 +15,13 @@ Follow the steps to get your Mac set up:
    will install XCode, Homebrew, Ansible and Git and will clone this repository:
 
    ```shell
-   $ sh -c (curl -fsSL https://raw.githubusercontent.com/fefas/mac-setup/master/bootstrap)
+   $ bash -c $(curl -fsSL https://raw.githubusercontent.com/fefas/mac-setup/master/bootstrap)
    ```
 
 2. After that, the script `install` will run the
    ```shell
-   $ cd ~/.mac-setup/src
-   $ ./run install
+   $ mac-setup init # clone dotfiles
+   $ mac-setup init # configure and install
    ```
 
 ## TODO
@@ -32,7 +32,6 @@ What I still want to automate:
   - [ ] Screen resolution
   - [ ] Night Shift
 * [ ] Dock
-  - [ ] Add the applications I use and remove the other ones
 * [ ] Configure iTerm2
 * [ ] Wallpapers
 * [ ] ...

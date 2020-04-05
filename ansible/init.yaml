@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  vars:
+    workDir: ~/.mac-setup
+    dotfilesDir: '{{ workDir }}/dotfiles'
+
+  vars_prompt:
+  - name: username
+    prompt: "Enter a github user name for cloning dotfiles"
+    private: no
+
+  tasks:
+  - name: Clone dotfiles
+    git:
+      repo: 'git@github.com:{{ username }}/dotfiles.git'
+      dest: "{{ dotfilesDir }}"
+      version: master

@@ -2,39 +2,43 @@
 
 set -e
 
+export PATH=/usr/local/bin:$PATH
+installDir=$HOME/.mac-setup/src
+binPath=/usr/local/bin/mac-setup
+
 function printInfo() {
     YELLOW='\033[0;33m'
     NC='\033[0m' # No Color
 
-    echo -e "${YELLOW}$1${NC}"
+    echo -e "${YELLOW}$@${NC}"
 }
 
-# Install xcode
+printInfo Installing xcode
 if [[ $(/usr/bin/gcc 2>&1) =~ "no developer tools were found" ]] || [[ ! -x /usr/bin/gcc ]]; then
-    printInfo 'Installing XCode'
     xcode-select --install
 fi
 
-# Install homebrew
+printInfo Installing homebrew
 if [[ ! -x /usr/local/bin/brew ]]; then
-    printInfo Installing Homebrew
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Reconfigura Path
-export PATH=/usr/local/bin:$PATH
-
-# Install ansible
+printInfo Installing ansible
 if [[ ! -x /usr/local/bin/ansible ]]; then
-    printInfo Installing Ansible
     brew install ansible
 fi
 
-# Install git
+printInfo Installing git
 if [[ ! -x /usr/local/bin/git ]]; then
-    printInfo Installing Git
     brew install git
 fi
 
-# Clone this repository
-git clone git@github.com:fefas/mac-setup.git $HOME/.mac-setup/src
+printInfo Downloading code
+if [[ ! -x $installDir ]]; then
+    git clone git@github.com:fefas/mac-setup.git $installDir
+fi
+
+printInfo Creating link $binPath
+if [[ ! -x $binPath ]]; then
+    sudo ln -s $installDir/run $binPath
+fi

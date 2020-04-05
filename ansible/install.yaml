@@ -1,37 +1,17 @@
 ---
 - hosts: localhost
   vars:
-    username: fefas
     workDir: ~/.mac-setup
     srcDir: '{{ workDir }}/src'
     dotfilesDir: '{{ workDir }}/dotfiles'
-    dotfilesRepo: 'git@github.com:{{ username }}/dotfiles.git'
 
   tasks:
-  - name: Create exec link
-    file:
-      state: link
-      src: '{{ srcDir }}/run'
-      dest: '/usr/local/bin/mac-setup'
-    register: dotfilesRepo
-
-  - name: Check if dotfiles repo is cloned
-    stat:
-      path: '{{ workDir }}/dotfiles'
-    register: dotfilesRepo
-
-  - name: Clone dotfiles
-    when: dotfilesRepo.stat.exists == False
-    git:
-      repo: "{{ dotfilesRepo }}"
-      dest: "{{ dotfilesDir }}"
-      version: master
-
   - name: Link dotfiles
     file:
       state: link
       src: '{{ dotfilesDir }}/{{ item.src }}'
       dest: '~/{{ item.dest }}'
+      force: yes
     with_items:
     - src: gitconfig
       dest: .gitconfig
